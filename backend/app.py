@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from ortools.constraint_solver import pywrapcp, routing_enums_pb2
 import math
 
 app = Flask(__name__)
+CORS(app)
 
 
 def create_distance_matrix(coords):
