@@ -35,3 +35,20 @@ Desarrollar una solución modular con componentes de **backend** y **frontend** 
    ```
 
 La API expone la ruta `/api/solve`, la cual recibe un JSON con un arreglo `coordinates` y devuelve la secuencia óptima calculada.
+
+## Ejecución del frontend
+
+1. En otra terminal, inicia un servidor estático dentro de la carpeta `frontend`:
+   ```bash
+   cd frontend
+   # usando Python 3
+   python -m http.server 8000
+   ```
+2. Abre `http://localhost:8000` en tu navegador.
+
+## Probar la aplicación
+
+1. Con el backend en funcionamiento, abre la página del frontend.
+2. Haz clic en el canvas para agregar ciudades.
+3. Pulsa **Agregar** para enviar las coordenadas al backend.
+4. Se dibujarán líneas entre las ciudades siguiendo el orden óptimo devuelto por la API.
