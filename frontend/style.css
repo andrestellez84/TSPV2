@@ -15,6 +15,15 @@ body {
     cursor: crosshair;
 }
 
+.points {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    text-align: left;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
 .controls {
     margin-top: 10px;
 }

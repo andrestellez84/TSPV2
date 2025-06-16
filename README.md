@@ -9,25 +9,26 @@ Desarrollar una solución modular con componentes de **backend** y **frontend** 
 ## Instalación de dependencias
 
 1. Clona este repositorio.
-2. Desde la raíz, instala las dependencias de cada módulo:
-   ```bash
-   cd backend
-   # instala dependencias del backend (por ejemplo, con npm o pip)
-   cd ../frontend
-   # instala dependencias del frontend (por ejemplo, con npm)
-   ```
-
-## Ejecución del servidor backend
-
-1. Crea un entorno virtual en la carpeta `backend` y activa el entorno:
+2. Desde la raíz instala las dependencias del backend:
    ```bash
    cd backend
    python3 -m venv venv
-   source venv/bin/activate
+   source venv/bin/activate     # en Windows usa: venv\Scripts\activate
+   pip install -r requirements.txt
    ```
-2. Instala las dependencias necesarias:
+   El frontend es estático y no necesita dependencias adicionales.
+
+## Ejecución del servidor backend
+
+1. Crea un entorno virtual en la carpeta `backend` y actívalo:
    ```bash
-   pip install flask ortools
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate     # en Windows usa: venv\Scripts\activate
+   ```
+2. Instala las dependencias necesarias desde `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
    ```
 3. Inicia el servidor:
    ```bash
@@ -49,9 +50,9 @@ La API expone la ruta `/api/solve`, la cual recibe un JSON con un arreglo `coord
 ## Probar la aplicación
 
 1. Con el backend en funcionamiento, abre la página del frontend.
-2. Haz clic en el canvas para agregar ciudades.
-3. Pulsa **Agregar** para enviar las coordenadas al backend.
-4. Se dibujarán líneas entre las ciudades siguiendo el orden óptimo devuelto por la API.
+2. Haz clic en el canvas para agregar ciudades. Verás la lista de coordenadas debajo del lienzo.
+3. Pulsa **Mejor Ruta** para enviar las coordenadas al backend.
+4. Se dibujará la ruta óptima en el canvas siguiendo el orden devuelto por la API.
 
 ## Ejecutar pruebas
 
@@ -59,8 +60,7 @@ Para verificar el funcionamiento del solver se incluye una suite de pruebas basa
 Con un entorno virtual activo, ejecuta:
 
 ```bash
-cd backend
-python -m unittest discover -s tests
+python -m unittest discover -s backend/tests
 ```
 
 Esto correrá pruebas sencillas sobre el endpoint `/api/solve`.
