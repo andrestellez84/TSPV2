@@ -22,8 +22,16 @@ def create_distance_matrix(coords):
 def solve_tsp():
     data = request.get_json()
     coords = data.get('coordinates') if data else None
-    if not coords:
+    if not coords or not isinstance(coords, list):
         return jsonify({'error': 'No coordinates provided'}), 400
+    if len(coords) < 2:
+        return jsonify({'error': 'At least two coordinates required'}), 400
+    if any(
+        not isinstance(c, (list, tuple)) or len(c) != 2 or
+        not all(isinstance(v, (int, float)) for v in c)
+        for c in coords
+    ):
+        return jsonify({'error': 'Invalid coordinates format'}), 400
 
     distance_matrix = create_distance_matrix(coords)
     manager = pywrapcp.RoutingIndexManager(len(distance_matrix), 1, 0)
