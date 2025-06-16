@@ -9,25 +9,26 @@ Desarrollar una solución modular con componentes de **backend** y **frontend** 
 ## Instalación de dependencias
 
 1. Clona este repositorio.
-2. Desde la raíz, instala las dependencias de cada módulo:
-   ```bash
-   cd backend
-   # instala dependencias del backend (por ejemplo, con npm o pip)
-   cd ../frontend
-   # instala dependencias del frontend (por ejemplo, con npm)
-   ```
-
-## Ejecución del servidor backend
-
-1. Crea un entorno virtual en la carpeta `backend` y activa el entorno:
+2. Desde la raíz instala las dependencias del backend:
    ```bash
    cd backend
    python3 -m venv venv
-   source venv/bin/activate
+   source venv/bin/activate     # en Windows usa: venv\Scripts\activate
+   pip install -r requirements.txt
    ```
-2. Instala las dependencias necesarias:
+   El frontend es estático y no necesita dependencias adicionales.
+
+## Ejecución del servidor backend
+
+1. Crea un entorno virtual en la carpeta `backend` y actívalo:
    ```bash
-   pip install flask flask-cors ortools
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate     # en Windows usa: venv\Scripts\activate
+   ```
+2. Instala las dependencias necesarias desde `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
    ```
 3. Inicia el servidor:
    ```bash
