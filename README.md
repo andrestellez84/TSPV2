@@ -27,7 +27,7 @@ Desarrollar una solución modular con componentes de **backend** y **frontend** 
    ```
 2. Instala las dependencias necesarias:
    ```bash
-   pip install flask ortools
+   pip install flask flask-cors ortools
    ```
 3. Inicia el servidor:
    ```bash
@@ -49,9 +49,9 @@ La API expone la ruta `/api/solve`, la cual recibe un JSON con un arreglo `coord
 ## Probar la aplicación
 
 1. Con el backend en funcionamiento, abre la página del frontend.
-2. Haz clic en el canvas para agregar ciudades.
-3. Pulsa **Agregar** para enviar las coordenadas al backend.
-4. Se dibujarán líneas entre las ciudades siguiendo el orden óptimo devuelto por la API.
+2. Haz clic en el canvas para agregar ciudades. Verás la lista de coordenadas debajo del lienzo.
+3. Pulsa **Mejor Ruta** para enviar las coordenadas al backend.
+4. Se dibujará la ruta óptima en el canvas siguiendo el orden devuelto por la API.
 
 ## Ejecutar pruebas
 
@@ -59,8 +59,7 @@ Para verificar el funcionamiento del solver se incluye una suite de pruebas basa
 Con un entorno virtual activo, ejecuta:
 
 ```bash
-cd backend
-python -m unittest discover -s tests
+python -m unittest discover -s backend/tests
 ```
 
 Esto correrá pruebas sencillas sobre el endpoint `/api/solve`.

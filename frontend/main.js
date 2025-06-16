@@ -1,6 +1,7 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const points = [];
+const list = document.getElementById('pointsList');
 
 canvas.addEventListener('click', event => {
     const rect = canvas.getBoundingClientRect();
@@ -8,6 +9,7 @@ canvas.addEventListener('click', event => {
     const y = event.clientY - rect.top;
     points.push({ x, y });
     drawPoint(x, y);
+    updateList();
 });
 
 function drawPoint(x, y) {
@@ -20,9 +22,10 @@ function drawPoint(x, y) {
 document.getElementById('clearBtn').addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     points.length = 0;
+    updateList();
 });
 
-document.getElementById('addBtn').addEventListener('click', async () => {
+document.getElementById('solveBtn').addEventListener('click', async () => {
     if (points.length < 2) {
         alert('Debes agregar al menos dos puntos');
         return;
@@ -30,7 +33,7 @@ document.getElementById('addBtn').addEventListener('click', async () => {
 
     const coordinates = points.map(p => [p.x, p.y]);
     try {
-        const response = await fetch('/api/solve', {
+        const response = await fetch('http://localhost:5000/api/solve', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ coordinates })
@@ -58,4 +61,13 @@ function drawRoute(route) {
         ctx.lineTo(p.x, p.y);
     }
     ctx.stroke();
+}
+
+function updateList() {
+    list.innerHTML = '';
+    points.forEach((p, idx) => {
+        const li = document.createElement('li');
+        li.textContent = `${idx + 1}: (${p.x.toFixed(1)}, ${p.y.toFixed(1)})`;
+        list.appendChild(li);
+    });
 }
