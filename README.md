@@ -52,3 +52,15 @@ La API expone la ruta `/api/solve`, la cual recibe un JSON con un arreglo `coord
 2. Haz clic en el canvas para agregar ciudades.
 3. Pulsa **Agregar** para enviar las coordenadas al backend.
 4. Se dibujarán líneas entre las ciudades siguiendo el orden óptimo devuelto por la API.
+
+## Ejecutar pruebas
+
+Para verificar el funcionamiento del solver se incluye una suite de pruebas basada en `unittest` dentro del directorio `backend/tests`.
+Con un entorno virtual activo, ejecuta:
+
+```bash
+cd backend
+python -m unittest discover -s tests
+```
+
+Esto correrá pruebas sencillas sobre el endpoint `/api/solve`.
